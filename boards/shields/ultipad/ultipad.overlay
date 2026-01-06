@@ -1,34 +1,11 @@
-#include <dt-bindings/zmk/matrix_transform.h> // Put this with the other includes at the top of your overlay
+#include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 #include "ultipad-layouts.dtsi"
 
-/{
-
+/ {
     chosen {
         zmk,physical-layout = &physical_layout0;
         zephyr,display = &oled;
-    };
-
-    middle_left_encoder: encoder_1: encoder_1 {
-        compatible = "alps,ec11";
-        a-gpios = <&pro_micro 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <80>;
-        status = "disabled";
-    };
-
-    ttc_encoder: encoder_2: encoder_2 {
-        compatible = "alps,ec11";
-        a-gpios = <&pro_micro 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <80>;
-        status = "disabled";
-    };
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&middle_left_encoder &ttc_encoder>;
-        triggers-per-rotation = <20>;
     };
 };
 
